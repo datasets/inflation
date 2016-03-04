@@ -1,0 +1,70 @@
+{
+  "name": "inflation",
+  "titles": ["Inflation, GDP deflator", "Inflation, consumer prices"],
+  "descriptions": ["Annual growth rate of the GDP implicit deflator", "Inflation measured by the consumer price inde"],
+  "licenses" : [
+    {
+      "type": "odc-pddl",
+      "url": "http://opendatacommons.org/licenses/pddl/"
+    }
+  ],
+  "keywords": [ "GDP", "Inflation", "GDP deflator", "Inflation GDP", "Annual Data", "The World Bank" ],
+  "version": "2.0.0",
+  "last_updated": "2016-03-04",
+  "sources": [
+    {
+      "name": "The World Bank",
+      "web": ["http://data.worldbank.org/indicator/NY.GDP.DEFL.KD.ZG", "http://data.worldbank.org/indicator/FP.CPI.TOTL.ZG"]
+    }
+  ],
+  "resources": [
+    {
+      "url": "http://api.worldbank.org/indicator/NY.GDP.DEFL.KD.ZG?format=csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "Country Name",
+            "type": "string"
+          },
+          {
+            "name": "Country Code",
+            "type": "string"
+          },
+          {
+            "name": "Year",
+            "type": "date",
+            "format": "yyyy"
+          },
+          {
+            "name": "Inflation", 
+            "type": "number"
+          }
+	]
+      }
+    },
+    {
+      "url": "http://api.worldbank.org/indicator/FP.CPI.TOTL.ZG?format=csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "Country Name",
+            "type": "string"
+          },
+          {
+            "name": "Country Code",
+            "type": "string"
+          },
+          {
+            "name": "Year",
+            "type": "date",
+            "format": "yyyy"
+          },
+          {
+            "name": "Inflation", 
+            "type": "number"
+          }
+	]
+      }
+    }
+  ]
+}
