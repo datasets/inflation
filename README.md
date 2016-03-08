@@ -8,11 +8,11 @@ The actual download happens via [The World Bank's API (with csv as the requested
 
 They are parsed via the script **inflation2datapackage.py** located in scripts.
 
-## Usage of cpi2datapackage.py
+## Usage of inflation2datapackage.py
 
     usage: inflation2datapackage.py [-h] [-o filename] [source]
     
-    convert WorldBank CPI data to a data package resource
+    convert WorldBank Inflation data to a data package resource
 
     positional arguments:
       source                source file to generate output from
