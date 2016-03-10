@@ -20,4 +20,4 @@ They are parsed via the script **inflation2datapackage.py** located in scripts.
     optional arguments:
       -h, --help            show this help message and exit
       -o filename, --output filename
-                            define output filename
+                            define output filename (in case of filename, define source as well)

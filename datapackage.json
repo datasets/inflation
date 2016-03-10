@@ -27,7 +27,7 @@
       "schema": {
         "fields": [
           {
-            "name": "Country Name",
+            "name": "Country",
             "type": "string"
           },
           {
@@ -51,7 +51,7 @@
       "schema": {
         "fields": [
           {
-            "name": "Country Name",
+            "name": "Country",
             "type": "string"
           },
           {
