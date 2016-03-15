@@ -6,4 +6,4 @@ The data comes from [The World Bank (CPI)](http://api.worldbank.org/indicator/NY
 
 The actual download happens via [The World Bank's API (with csv as the requested format) (CPI)](http://api.worldbank.org/indicator/FP.CPI.TOTL.ZG?format=csv), [The World Bank's API (with csv as the requested format) (GDP)](http://api.worldbank.org/indicator/NY.GDP.DEFL.KD.ZG?format=csv).
 
-They are parsed via the script **inflation2datapackage.py** located in scripts.
+They are parsed via the script **process.py** located in scripts.
