@@ -23,7 +23,7 @@
   ],
   "resources": [
     {
-      "url": "http://api.worldbank.org/indicator/NY.GDP.DEFL.KD.ZG?format=csv",
+      "path": "data/inflation-gdp.csv",
       "schema": {
         "fields": [
           {
@@ -47,7 +47,7 @@
       }
     },
     {
-      "url": "http://api.worldbank.org/indicator/FP.CPI.TOTL.ZG?format=csv",
+      "path": "data/inflation-consumer.csv",
       "schema": {
         "fields": [
           {
