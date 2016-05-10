@@ -37,7 +37,7 @@
           {
             "name": "Year",
             "type": "date",
-            "format": "yyyy"
+            "format": "fmt:%Y"
           },
           {
             "name": "Inflation", 
@@ -61,7 +61,7 @@
           {
             "name": "Year",
             "type": "date",
-            "format": "yyyy"
+            "format": "fmt:%Y"
           },
           {
             "name": "Inflation", 
