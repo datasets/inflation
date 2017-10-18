@@ -2,23 +2,32 @@
   "name": "inflation",
   "title": "Annual inflation by GDP deflator and consumer prices",
   "descriptions": "Annual growth rate of the GDP implicit deflator and Inflation measured by the consumer price inde",
-  "licenses" : [
+  "licenses": [
     {
       "type": "odc-pddl",
       "url": "http://opendatacommons.org/licenses/pddl/"
     }
   ],
-  "keywords": [ "GDP", "Inflation", "GDP deflator", "Inflation GDP", "Annual Data", "The World Bank" ],
+  "keywords": [
+    "GDP",
+    "Inflation",
+    "GDP deflator",
+    "Inflation GDP",
+    "Annual Data",
+    "The World Bank"
+  ],
   "version": "2.0.0",
   "last_updated": "2016-03-04",
   "sources": [
     {
       "name": "The World Bank",
-      "web": "http://data.worldbank.org/indicator/NY.GDP.DEFL.KD.ZG"
+      "web": "http://data.worldbank.org/indicator/NY.GDP.DEFL.KD.ZG",
+      "title": "The World Bank"
     },
     {
       "name": "The World Bank",
-      "web": "http://data.worldbank.org/indicator/FP.CPI.TOTL.ZG"
+      "web": "http://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "title": "The World Bank"
     }
   ],
   "resources": [
@@ -36,15 +45,15 @@
           },
           {
             "name": "Year",
-            "type": "date",
-            "format": "%Y"
+            "type": "year"
           },
           {
-            "name": "Inflation", 
+            "name": "Inflation",
             "type": "number"
           }
-	]
-      }
+        ]
+      },
+      "name": "inflation-gdp"
     },
     {
       "path": "data/inflation-consumer.csv",
@@ -60,15 +69,15 @@
           },
           {
             "name": "Year",
-            "type": "date",
-            "format": "%Y"
+            "type": "year"
           },
           {
-            "name": "Inflation", 
+            "name": "Inflation",
             "type": "number"
           }
-	]
-      }
+        ]
+      },
+      "name": "inflation-consumer"
     }
   ]
 }
