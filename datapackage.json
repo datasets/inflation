@@ -4,8 +4,9 @@
   "descriptions": "Annual growth rate of the GDP implicit deflator and Inflation measured by the consumer price inde",
   "licenses": [
     {
-      "type": "odc-pddl",
-      "url": "http://opendatacommons.org/licenses/pddl/"
+      "name": "ODC-PDDL-1.0",
+      "path": "http://opendatacommons.org/licenses/pddl/",
+      "title": "Open Data Commons Public Domain Dedication and License v1.0"
     }
   ],
   "keywords": [
@@ -21,12 +22,12 @@
   "sources": [
     {
       "name": "The World Bank",
-      "web": "http://data.worldbank.org/indicator/NY.GDP.DEFL.KD.ZG",
+      "path": "http://data.worldbank.org/indicator/NY.GDP.DEFL.KD.ZG",
       "title": "The World Bank"
     },
     {
       "name": "The World Bank",
-      "web": "http://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "path": "http://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
       "title": "The World Bank"
     }
   ],
