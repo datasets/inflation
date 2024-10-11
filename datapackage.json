@@ -80,5 +80,6 @@
       },
       "name": "inflation-consumer"
     }
-  ]
+  ],
+  "collection": "inflation"
 }
