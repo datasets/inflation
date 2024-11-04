@@ -1,5 +1,5 @@
-#!/usr/bin/env python
-# -*- encoding: utf-8 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 # process.py - convert WorldBank inflation source files to datapackage resource
 #
@@ -16,24 +16,71 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import sys
-import csv
-import urllib
+import io
 import os
+import csv
+import zipfile
+import urllib.request
+import itertools
 
-# API URL's for inflation information from The World Bank (in csv format)
-SOURCES = ['http://api.worldbank.org/indicator/NY.GDP.DEFL.KD.ZG?format=csv', 'http://api.worldbank.org/indicator/NY.GDP.DEFL.KD.ZG?format=csv']
+SOURCES = \
+    ['https://api.worldbank.org/v2/en/indicator/NY.GDP.DEFL.KD.ZG?downloadformat=csv'
+     ,
+     'https://api.worldbank.org/v2/en/indicator/FP.CPI.TOTL.ZG?downloadformat=csv'
+     ]
 FILE_NAMES = ['inflation-consumer.csv', 'inflation-gdp.csv']
+
+
+def update_archive(source):
+    """
+    Update the archive with the latest inflation data from The World Bank,
+    and skip the first 4 rows in the CSV.
+    """
+    response = urllib.request.urlopen(source)
+    zip_file = zipfile.ZipFile(io.BytesIO(response.read()))
+    
+    # Find the CSV file that starts with 'API_'
+    csv_filename = next(f for f in zip_file.namelist() if f.startswith('API_'))
+
+    new_csv_name = csv_filename.split('_')[1] + '.csv'
+    
+    with zip_file.open(csv_filename) as csvfile:
+        csvreader = csv.reader(io.TextIOWrapper(csvfile, encoding='ISO-8859-1'))
+        rows = list(itertools.islice(csvreader, 4, None))  # Skip the first 4 rows
+        
+        # Save the CSV file to the 'archive' folder with the new name
+        with open(os.path.join('archive', new_csv_name), 'w', newline='') as output:
+            writer = csv.writer(output)
+            writer.writerows(rows)
 
 def get_csv(source):
     """
-    Get the inflation data as a CSV. Returns a tuple where the first item
-    is the header row and the second item is the rows of the CSV.
+    Get the inflation data as a CSV from a ZIP file. Returns a tuple where the
+    first item is the header row and the second item is the rows of the CSV.
     """
 
-    inflation = urllib.urlopen(source)
-    csvreader = csv.reader(inflation)
-    return (csvreader.next(), csvreader)
+    # Download the ZIP file
+
+    response = urllib.request.urlopen(source)
+    zip_file = zipfile.ZipFile(io.BytesIO(response.read()))
+
+    # Find the file that starts with "API_"
+
+    csv_filename = next(f for f in zip_file.namelist()
+                        if f.startswith('API_'))
+
+    # Open and read the CSV file
+
+    with zip_file.open(csv_filename) as csvfile:
+        csvreader = csv.reader(io.TextIOWrapper(csvfile,
+                               encoding='ISO-8859-1'))
+        next(csvreader)
+        next(csvreader)
+        next(csvreader)
+        next(csvreader)
+        header = next(csvreader)
+        return header, list(csvreader)
+
 
 def process(headers, rows):
     """
@@ -44,36 +91,32 @@ def process(headers, rows):
     country, country code, the year, and the inflation value (so we're unwinding the
     columns into rows)
     """
-    
-    yield ["Country", "Country Code", "Year", "Inflation"]
+
+    yield ['Country', 'Country Code', 'Year', 'Inflation']
 
     for row in rows:
-        for index, inflation in enumerate(row[2:]):
-            if inflation:
+        for (index, inflation) in enumerate(row[2:]):
+            if inflation and index > 1:
+
                 # We yield the country and the country code then we lookup
                 # the corresponding year in the header (we add 2 since we're
                 # enumerating from the third column)
-                yield row[:2]+[headers[index+2], inflation]
+                yield row[:2] + [headers[index + 2], inflation]
 
-def write_csv(rows, filename = None):
+def write_csv(rows, filename=None):
     """
     Write rows to a CSV file. Use default dialect for the CSV. If a file name
     is not provided, but source is, the rows will be printed to standard output
     """
-	
+
     with open('data/' + filename, 'w') as output:
-		csvwriter = csv.writer(output)
-		for row in rows:
-			csvwriter.writerow(row)
+        csvwriter = csv.writer(output)
+        for row in rows:
+            csvwriter.writerow(row)
 
-if __name__ == "__main__":
-	for index in range(len(SOURCES)):
-		header, row = get_csv(SOURCES[index])
-		write_csv(process(header, row), FILE_NAMES[index])
 
-    	
-    
-    
-    
-    
-    
+if __name__ == '__main__':
+    for index in range(len(SOURCES)):
+        update_archive(SOURCES[index])
+        header, row = get_csv(SOURCES[index])
+        write_csv(process(header, row), FILE_NAMES[index])
