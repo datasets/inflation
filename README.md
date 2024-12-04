@@ -4,9 +4,9 @@ Inflation, GDP deflator (annual %) and Inflation, consumer prices (annual %) for
 
 ## Data
 
-The data comes from [The World Bank (CPI)](http://api.worldbank.org/indicator/NY.GDP.DEFL.KD.ZG?format=csv), [The World Bank (GDP)](http://api.worldbank.org/indicator/FP.CPI.TOTL.ZG?format=csv)  and is collected from 1973 to 2014. There are some values missing from data so users of the data will have to *guess* what should be in the empty slots.
+The data comes from [The World Bank (CPI)](https://api.worldbank.org/v2/en/indicator/NY.GDP.DEFL.KD.ZG?downloadformat=csv), [The World Bank (GDP)](https://api.worldbank.org/v2/en/indicator/FP.CPI.TOTL.ZG?downloadformat=csv)  and is collected from 1973 to 2014. There are some values missing from data so users of the data will have to *guess* what should be in the empty slots.
 
-The actual download happens via [The World Bank's API (with csv as the requested format) (CPI)](http://api.worldbank.org/indicator/FP.CPI.TOTL.ZG?format=csv), [The World Bank's API (with csv as the requested format) (GDP)](http://api.worldbank.org/indicator/NY.GDP.DEFL.KD.ZG?format=csv).
+The actual download happens via [The World Bank's API (with csv as the requested format) (CPI)](https://api.worldbank.org/v2/en/indicator/NY.GDP.DEFL.KD.ZG?downloadformat=csv), [The World Bank's API (with csv as the requested format) (GDP)](https://api.worldbank.org/v2/en/indicator/FP.CPI.TOTL.ZG?downloadformat=csv).
 
 ## Preparation
 

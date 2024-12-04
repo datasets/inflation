@@ -4,7 +4,7 @@ convert WorldBank Inflation data to a data package resource
     
 ### Reqirements
 
-Data preperation requires Python 2.
+Data preperation requires Python 3.
 
 ### Processing
 
