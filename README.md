@@ -21,6 +21,7 @@ Convert World Bank Inflation data into a data package resource.
 Run the following to download and process data:
 ```bash
 make data
+```
 
 ## Automation
 
