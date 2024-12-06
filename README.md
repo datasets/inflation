@@ -10,7 +10,22 @@ The actual download happens via [The World Bank's API (with csv as the requested
 
 ## Preparation
 
-They are parsed via the script **process.py** located in scripts.
+### Usage of process.py
+
+Convert World Bank Inflation data into a data package resource.
+
+### Requirements
+- Python 3 required.
+
+### Processing
+Run the following to download and process data:
+```bash
+make data
+
+## Automation
+
+Up-to-date (auto-updates every 3 months) inflation dataset could be found on the datahub.io:
+https://datahub.io/core/inflation
 
 ## License
 
