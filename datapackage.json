@@ -1,12 +1,12 @@
 {
   "name": "inflation",
   "title": "Annual inflation by GDP deflator and consumer prices",
-  "descriptions": "Annual growth rate of the GDP implicit deflator and Inflation measured by the consumer price inde",
+  "description": "Annual inflation rates for countries worldwide, covering two measures: the GDP implicit deflator (NY.GDP.DEFL.KD.ZG) and consumer prices (FP.CPI.TOTL.ZG). Both series are sourced from the World Bank and cover most countries from the 1960s onward.",
   "licenses": [
     {
-      "name": "ODC-PDDL-1.0",
-      "path": "http://opendatacommons.org/licenses/pddl/",
-      "title": "Open Data Commons Public Domain Dedication and License v1.0"
+      "name": "CC-BY-4.0",
+      "path": "https://creativecommons.org/licenses/by/4.0/",
+      "title": "Creative Commons Attribution 4.0 International"
     }
   ],
   "keywords": [
@@ -18,67 +18,76 @@
     "The World Bank"
   ],
   "version": "2.0.0",
-  "last_updated": "2016-03-04",
   "sources": [
     {
-      "name": "The World Bank",
-      "path": "http://data.worldbank.org/indicator/NY.GDP.DEFL.KD.ZG",
-      "title": "The World Bank"
+      "name": "World Bank: GDP Deflator",
+      "path": "https://data.worldbank.org/indicator/NY.GDP.DEFL.KD.ZG",
+      "title": "World Bank — Inflation, GDP deflator (annual %)"
     },
     {
-      "name": "The World Bank",
-      "path": "http://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
-      "title": "The World Bank"
+      "name": "World Bank: Consumer Prices",
+      "path": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "title": "World Bank — Inflation, consumer prices (annual %)"
     }
   ],
   "resources": [
     {
+      "name": "inflation-gdp",
       "path": "data/inflation-gdp.csv",
+      "description": "Annual GDP deflator inflation rate (NY.GDP.DEFL.KD.ZG) for each country and year, as published by the World Bank. Each row represents one country-year observation. Rows are omitted when the World Bank reports no value for that country-year.",
       "schema": {
         "fields": [
           {
             "name": "Country",
-            "type": "string"
+            "type": "string",
+            "description": "Full country or territory name as used by the World Bank (e.g. 'United States', 'Africa Eastern and Southern')."
           },
           {
             "name": "Country Code",
-            "type": "string"
+            "type": "string",
+            "description": "ISO 3166-1 alpha-3 country code, or a World Bank regional/aggregate code (e.g. 'USA', 'AFE')."
           },
           {
             "name": "Year",
-            "type": "year"
+            "type": "year",
+            "description": "Four-digit year of the observation."
           },
           {
             "name": "Inflation",
-            "type": "number"
+            "type": "number",
+            "description": "Annual percentage change in the GDP implicit deflator (NY.GDP.DEFL.KD.ZG). Measures economy-wide price changes relative to a base year."
           }
         ]
-      },
-      "name": "inflation-gdp"
+      }
     },
     {
+      "name": "inflation-consumer",
       "path": "data/inflation-consumer.csv",
+      "description": "Annual consumer price inflation rate (FP.CPI.TOTL.ZG) for each country and year, as published by the World Bank. Each row represents one country-year observation. Rows are omitted when the World Bank reports no value for that country-year.",
       "schema": {
         "fields": [
           {
             "name": "Country",
-            "type": "string"
+            "type": "string",
+            "description": "Full country or territory name as used by the World Bank (e.g. 'United States', 'Africa Eastern and Southern')."
           },
           {
             "name": "Country Code",
-            "type": "string"
+            "type": "string",
+            "description": "ISO 3166-1 alpha-3 country code, or a World Bank regional/aggregate code (e.g. 'USA', 'AFE')."
           },
           {
             "name": "Year",
-            "type": "year"
+            "type": "year",
+            "description": "Four-digit year of the observation."
           },
           {
             "name": "Inflation",
-            "type": "number"
+            "type": "number",
+            "description": "Annual percentage change in consumer prices (FP.CPI.TOTL.ZG), as measured by the consumer price index (CPI)."
           }
         ]
-      },
-      "name": "inflation-consumer"
+      }
     }
   ],
   "collection": "inflation"
