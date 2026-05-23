@@ -30,9 +30,17 @@ jobs:
       with:
         python-version: '3.12'
 
+    - name: Install dependencies
+      run: |
+        pip install frictionless
+
     - name: Run Makefile
       run: |
         make data
+
+    - name: Validate datapackage
+      run: |
+        frictionless validate datapackage.json
 
     - name: Configure Git
       run: |

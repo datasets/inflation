@@ -28,7 +28,7 @@ SOURCES = \
      ,
      'https://api.worldbank.org/v2/en/indicator/FP.CPI.TOTL.ZG?downloadformat=csv'
      ]
-FILE_NAMES = ['inflation-consumer.csv', 'inflation-gdp.csv']
+FILE_NAMES = ['inflation-gdp.csv', 'inflation-consumer.csv']
 
 
 def update_archive(source):
